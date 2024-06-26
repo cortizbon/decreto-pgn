@@ -25,19 +25,27 @@ t3 = df.groupby('Entidad')['TOTAL'].sum().sort_values(ascending=False).head(10).
 
 t4 = df[df['Tipo de gasto'] == 'Funcionamiento'].groupby('Cuenta')['TOTAL'].sum().sort_values(ascending=False).reset_index()
 
-fig = px.bar(t1, x='Tipo de gasto', y='TOTAL', title='Tipo de gasto (cifras en miles de millones)')
+fig = px.bar(t1, x='Tipo de gasto', y='TOTAL', title='Tipo de gasto <br><sup>Cifras en miles de millones de pesos</sup>')
+
+fig.update_layout(yaxis_tickformat='.0f')
 
 st.plotly_chart(fig)
 
-fig = px.bar(t2, x='Sector', y='TOTAL', title='Top 10 - Sectores (cifras en miles de millones)',)
+
+
+fig = px.bar(t2, x='Sector', y='TOTAL', title='Top 10 - Sectores <br><sup>Cifras en miles de millones de pesos</sup>')
+             
+fig.update_layout(yaxis_tickformat='.0f')
 
 st.plotly_chart(fig)
 
-fig = px.bar(t3, x='Entidad', y='TOTAL', title='Top 10 - Sectores (cifras en miles de millones)')
+fig = px.bar(t3, x='Entidad', y='TOTAL', title='Top 10 - Sectores <br><sup>Cifras en miles de millones de pesos</sup>')
+fig.update_layout(yaxis_tickformat='.0f')
 
 st.plotly_chart(fig)
-fig = px.bar(t4, x='Cuenta', y='TOTAL', title='Cuentas de funcionamiento (cifras en miles de millones)')
 
+fig = px.bar(t4, x='Cuenta', y='TOTAL', title='Cuentas de funcionamiento <br><sup>Cifras en miles de millones de pesos</sup>')
+fig.update_layout(yaxis_tickformat='.0f')
 st.plotly_chart(fig)
 
 
