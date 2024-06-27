@@ -24,7 +24,6 @@ sectores = df['Sector'].unique().tolist()
 tab1, tab2, tab3, tab4, tab5 = st.tabs(['General',
                                 'Transferencias corrientes',
                                 'Prestaciones sociales',
-                                'Inversión',
                                 'Descarga de datos'])
 
 # Barras con tipo de gasto
@@ -106,22 +105,22 @@ with tab3:
     ))
 
     st.plotly_chart(fig)
-with tab4:
+# with tab4:
     # inversión
-    inv = df[df['Tipo de gasto'] == 'Inversión']
-    entidades = inv['Entidad'].unique().tolist()
-    entidad = st.selectbox("Seleccione una entidad", entidades)
-    filtro2 = inv[inv['Entidad'] == entidad]
-    piv2 = filtro2.groupby("Rubro")['TOTAL_alt'].sum().sort_values(ascending=False).reset_index()
-    fig = px.bar(piv2, x='Rubro', y='TOTAL_alt', title='Distribución de la reducción en inversión<br><sup>Cifras en miles de millones de pesos</sup>')
+#    inv = df[df['Tipo de gasto'] == 'Inversión']
+#    entidades = inv['Entidad'].unique().tolist()
+#    entidad = st.selectbox("Seleccione una entidad", entidades)
+#    filtro2 = inv[inv['Entidad'] == entidad]
+#    piv2 = filtro2.groupby("Rubro")['TOTAL_alt'].sum().sort_values(ascending=False).reset_index()
+#    fig = px.bar(piv2, x='Rubro', y='TOTAL_alt', title='Distribución de la reducción en inversión<br><sup>Cifras en miles de millones de pesos</sup>')
 
-    fig.update_layout(yaxis_tickformat='.0f',
-    xaxis=dict(
-        showticklabels=False
-    ))
+#    fig.update_layout(yaxis_tickformat='.0f',
+#   xaxis=dict(
+#       showticklabels=False
+#   ))
 
-    st.plotly_chart(fig)    
-with tab5:
+#   st.plotly_chart(fig)    
+with tab4:
     st.header("Descarga de datos")
             
     binary_output = BytesIO()
