@@ -21,7 +21,7 @@ df['TOTAL_alt'] = (df['TOTAL'] / 1_000_000).round(2)
 
 sectores = df['Sector'].unique().tolist()
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(['General',
+tab1, tab2, tab3, tab4 = st.tabs(['General',
                                 'Transferencias corrientes',
                                 'Prestaciones sociales',
                                 'Descarga de datos'])
